@@ -11,29 +11,29 @@
     "convert": "node -r esm convert-to-base64.js"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "config": "^3.3.2",
+    "body-parser": "^1.20.1",
+    "config": "^3.3.8",
     "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "flatted": "^3.1.0",
-    "frontail": "^4.9.1",
+    "express": "^4.18.2",
+    "flatted": "^3.2.7",
+    "frontail": "^4.9.2",
     "is-docker": "^2.1.1",
     "kiwicam-broadlinkjs-rm": "^0.9.18",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "md5": "^2.3.0",
     "md5-file": "^5.0.0",
-    "mqtt": "^4.2.1",
+    "mqtt": "^4.3.7",
     "request": "^2.88.2",
-    "shelljs": "^0.8.4",
-    "socket.io": "^2.3.0",
-    "systeminformation": "^4.29.3",
-    "winston": "^3.3.3",
-    "yargs": "^16.1.0"
+    "shelljs": "^0.8.5",
+    "socket.io": "^2.5.0",
+    "systeminformation": "^4.34.23",
+    "winston": "^3.8.2",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.13.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.6"
+    "eslint-plugin-import": "^2.26.0",
+    "nodemon": "^2.0.20"
   }
 }
