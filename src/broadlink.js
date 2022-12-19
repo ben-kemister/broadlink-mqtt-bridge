@@ -5,11 +5,13 @@ import BroadlinkJS from 'kiwicam-broadlinkjs-rm';
 
 import logger from './logger';
 import config from './config';
+const dgram = require('dgram');
 
 class Broadlink {
   constructor() {
     this.loopTimeToFindDevices = 5;
     this.broadlink = new BroadlinkJS();
+    this.configureBroadLink();
     this.devicesLocal = {};
 
     // network callback, device is found
@@ -21,6 +23,27 @@ class Broadlink {
       logger.debug('Device raw', device.host);
       this.emit('device', device);
     });
+  }
+
+  configureBroadLink(){
+    // Setup Broadlink-RM if being used in a (docker) container
+    if(config.settings.docker){
+      logger.info(`Configuring device discovery for use in Docker container with broadcast range ${config.settings.docker.discoveryIpRange} and UDP port ${config.settings.docker.udpPort}`);
+      // FIXME: this relys on a yet to be merged PR of the https://github.com/kiwi-cam/broadlinkjs-rm project
+      this.broadlink.broadcastAddress = config.settings.docker.discoveryIpRange;
+      this.broadlink.discoveryPort = config.settings.docker.udpPort;
+    }
+
+    // Show the broadlink-js debug logs based on the broadlink-mqtt-bridge log config
+    this.broadlink.debug = logger.isDebugEnabled || logger.isSillyEnabled;
+    // redirect Broadlink logs
+    this.broadlink.log = (message) => {
+        if(message.toLowerCase().includes("debug")){
+          logger.debug(message);
+        }else{
+          logger.info(message);
+        }
+    };
   }
 
   devices() {
