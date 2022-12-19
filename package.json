@@ -1,6 +1,6 @@
 {
   "name": "broadlink-mqtt-bridge",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -17,7 +17,6 @@
     "express": "^4.18.2",
     "flatted": "^3.2.7",
     "frontail": "^4.9.2",
-    "is-docker": "^2.1.1",
     "kiwicam-broadlinkjs-rm": "^0.9.18",
     "lodash": "^4.17.21",
     "md5": "^2.3.0",

@@ -25,9 +25,9 @@ let recordAction;
 
 class WebserverClass {
   constructor() {
-    this.host = isDocker() ? '0.0.0.0' : '127.0.0.1';
+    this.host = config.settings.docker ? '0.0.0.0' : '127.0.0.1';
     logger.info(`Listen on ip ${this.host}`);
-    if (isDocker() && (config.settings.gui.port !== 3000 || config.settings.gui.logs !== 3001)) {
+    if (config.settings.docker && (config.settings.gui.port !== 3000 || config.settings.gui.logs !== 3001)) {
       logger.error('Cant change gui or log ports on docker container');
     }
     const app = express();
