@@ -8,14 +8,13 @@
 #       docker push <image_registry>:[port]/[group/]broadlink-mqtt-bridge:<version>
 #   
 #   To build (and publish) multiplatform images run:
-#       docker buildx create --use default
-#       docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t <image_registry>:[port]/[group/]broadlink-mqtt-bridge:<version> .
-#       docker push <image_registry>:[port]/[group/]broadlink-mqtt-bridge:<version>
+#       docker buildx create --use [--driver-opt network=host]
+#       docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 --push -t <image_registry>:[port]/[group/]broadlink-mqtt-bridge:<version> .
 #
-#       For more information on multiplatofrm builds see: https://docs.docker.com/build/building/multi-platform/
+#       For more information on multiplatform builds see: https://docs.docker.com/build/building/multi-platform/
 #
 #   To run the image (for development/testing):
-#       Create a separte folder for docker config (so it is not confused with the default ones): 
+#       Create a separte folder for your docker config (so that it is not confused with the default ones): 
 #           mkdir tmp-conf
 #       Copy your local.json into the folder:
 #           cp ./config/local.json ./tmp-config/
